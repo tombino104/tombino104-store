@@ -3,7 +3,7 @@ id: tombino104-homelab-savings
 
 category: finance
 name: Homelab Savings
-version: "0.1.0"
+version: "0.2.0"
 tagline: What does your homelab save you?
 description: >-
   A tiny calculator for how much money your homelab saves you. List the services you
@@ -28,5 +28,5 @@ gallery:
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/2-home-dark.png
 path: ""
 releaseNotes: >-
-  First release.
+  Services and other costs can have a short description, and the lists are more compact when you have many entries.
 submitter: tombino104
