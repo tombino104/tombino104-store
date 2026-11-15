@@ -4,6 +4,7 @@ category: media
 name: VibraVid
 version: "latest"
 tagline: Search and download streaming videos to your library
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-vibravid/icon.svg
 description: >-
   VibraVid is a web app for searching and downloading movies and TV series.
   On umbrelOS it saves everything in the Downloads/VibraVid folder, so
