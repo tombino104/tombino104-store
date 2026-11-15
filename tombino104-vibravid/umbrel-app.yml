@@ -1,0 +1,23 @@
+manifestVersion: 1
+id: tombino104-vibravid
+category: media
+name: VibraVid
+version: "latest"
+tagline: Search and download streaming videos to your library
+description: >-
+  VibraVid is a web app for searching and downloading movies and TV series.
+  On umbrelOS it saves everything in the Downloads/VibraVid folder, so
+  Jellyfin can read it as a library without extra setup.
+developer: AstraeLabs
+website: https://github.com/AstraeLabs/VibraVid
+dependencies: []
+repo: https://github.com/AstraeLabs/VibraVid
+support: https://github.com/AstraeLabs/VibraVid/issues
+port: 8000
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store
