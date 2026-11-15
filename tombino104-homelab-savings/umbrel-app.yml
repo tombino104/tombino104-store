@@ -1,0 +1,32 @@
+manifestVersion: 1
+id: tombino104-homelab-savings
+
+category: finance
+name: Homelab Savings
+version: "0.1.0"
+tagline: What does your homelab save you?
+description: >-
+  A tiny calculator for how much money your homelab saves you. List the services you
+  self-host and what their cloud equivalents would cost, add the electricity, the
+  hardware and any other cost, and see the net savings per month and per year, and the
+  month the hardware pays for itself.
+
+
+  It comes with a small catalog of common self-hosted services with rough example
+  prices that you can edit. No accounts, no cloud, no tracking: your numbers are kept
+  in one small file on your Umbrel. The whole app is a single tiny binary that uses a
+  few megabytes of memory.
+developer: tombino104
+website: https://github.com/tombino104/homelab-savings
+dependencies: []
+repo: https://github.com/tombino104/homelab-savings
+support: https://github.com/tombino104/homelab-savings/issues
+port: 8474
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/icon.svg
+gallery:
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/1-home.png
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/2-home-dark.png
+path: ""
+releaseNotes: >-
+  First release.
+submitter: tombino104

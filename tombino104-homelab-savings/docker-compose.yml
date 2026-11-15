@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-homelab-savings_web_1
+      APP_PORT: 3000
+
+  web:
+    image: ghcr.io/tombino104/homelab-savings:0.1.0@sha256:4431ad39530030df4c161bdd063b3018f8bcdd7dca8a5d0605950842ae4071f2
+    restart: on-failure
+    stop_grace_period: 10s
+    environment:
+      PORT: 3000
+      DATA_DIR: /data
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    read_only: true
+    security_opt:
+      - no-new-privileges:true

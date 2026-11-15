@@ -1,6 +1,6 @@
 # tombino104-store
 
-A community app store for umbrelOS. It currently contains one app, **Personal OS**.
+A community app store for umbrelOS. It currently contains two apps: **Personal OS** and **Homelab Savings**.
 
 To use it, publish this folder as its own repository (it must be the root of that repository), then in umbrelOS open the App Store, choose the menu at the top right, **Community App Stores**, and add the repository address.
 
