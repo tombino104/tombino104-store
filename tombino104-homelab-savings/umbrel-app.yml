@@ -3,13 +3,13 @@ id: tombino104-homelab-savings
 
 category: finance
 name: Homelab Savings
-version: "0.2.0"
+version: "0.3.0"
 tagline: What does your homelab save you?
 description: >-
   A tiny calculator for how much money your homelab saves you. List the services you
   self-host and what their cloud equivalents would cost, add the electricity, the
   hardware and any other cost, and see the net savings per month and per year, and the
-  month the hardware pays for itself.
+  month the hardware pays for itself. It also shows how much you have saved so far and how that grows over time.
 
 
   It comes with a small catalog of common self-hosted services with rough example
@@ -28,5 +28,5 @@ gallery:
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/2-home-dark.png
 path: ""
 releaseNotes: >-
-  Services and other costs can have a short description, and the lists are more compact when you have many entries.
+  New: the total you have saved so far, a chart of it over time with the break-even, what you will have saved after 1, 3 and 5 years, and a backup you can download and restore.
 submitter: tombino104
