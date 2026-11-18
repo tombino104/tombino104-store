@@ -1,0 +1,3 @@
+# app directory | image | tag
+tombino104-mini-qr|ghcr.io/lyqht/mini-qr|latest
+tombino104-vibravid|ghcr.io/astraelabs/vibravid|latest

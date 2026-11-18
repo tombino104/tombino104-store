@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-mini-qr_web_1
+      APP_PORT: 8080
+
+  web:
+    image: ghcr.io/lyqht/mini-qr:latest@sha256:f6163e8a87fb06a2931adaea94209de7f14a47f8cadc8d600abfc429612fc858
+    restart: on-failure
+    stop_grace_period: 10s

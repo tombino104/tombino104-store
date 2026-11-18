@@ -1,0 +1,27 @@
+manifestVersion: 1
+id: tombino104-mini-qr
+category: files
+name: MiniQR
+version: "2026.11.18"
+tagline: Create and scan cute QR codes
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-mini-qr/icon.svg
+description: >-
+  MiniQR is a small web app to create and scan QR codes. Make codes for links,
+  text, Wi-Fi networks and more, customize colors, dots, corners and logos, and
+  download them as PNG, SVG or JPG. You can also scan a QR code from an image
+  or the camera.
+
+
+  Everything runs in your browser: nothing you type is sent anywhere, and the
+  app keeps no data on your Umbrel.
+developer: lyqht
+website: https://github.com/lyqht/mini-qr
+dependencies: []
+repo: https://github.com/lyqht/mini-qr
+support: https://github.com/lyqht/mini-qr/issues
+port: 8475
+gallery: []
+path: ""
+releaseNotes: ""
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store
