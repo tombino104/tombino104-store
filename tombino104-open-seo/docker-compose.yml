@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-open-seo_web_1
+      APP_PORT: 3001
+
+  web:
+    image: ghcr.io/every-app/open-seo:0.1.28@sha256:a8d034bd6db290492b77f73761fcb3e2aa2dcedcf4d258fc762ba9aef948041b
+    restart: on-failure
+    stop_grace_period: 30s
+    # Optional API keys (DATAFORSEO_API_KEY=..., OPENROUTER_API_KEY=...): see the app description.
+    env_file:
+      - path: ${APP_DATA_DIR}/data/openseo.env
+        required: false
+    environment:
+      CLOUDFLARE_INCLUDE_PROCESS_ENV: "true"
+      PORT: 3001
+      # Umbrel's own login (app_proxy) already protects the app, so OpenSEO runs without its own sign-in.
+      AUTH_MODE: local_noauth
+      BETTER_AUTH_SECRET: ${APP_SEED}
+      OPENSEO_TELEMETRY_DISABLED: "1"
+      DO_NOT_TRACK: "1"
+      VITE_SHOW_DEVTOOLS: "false"
+    volumes:
+      - ${APP_DATA_DIR}/data/wrangler:/app/.wrangler

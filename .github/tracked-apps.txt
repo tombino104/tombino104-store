@@ -1,3 +1,10 @@
-# app directory | image | tag
+# app directory | image (without tag) | source
+#   source = latest (or any fixed tag)  -> pin the digest of that tag, version = today's date
+#   source = gh:owner/repo              -> image tag = newest GitHub release tag, version = that release
+#   source = gh-nov:owner/repo          -> same, but the image tag has no leading "v"
+# Only the images listed here are refreshed; sidecars (databases, redis...) stay pinned.
 tombino104-mini-qr|ghcr.io/lyqht/mini-qr|latest
 tombino104-vibravid|ghcr.io/astraelabs/vibravid|latest
+tombino104-open-seo|ghcr.io/every-app/open-seo|gh-nov:every-app/open-seo
+tombino104-hycanvas|hycanvas/hycanvas|gh-nov:hyscaler/HyCanvas
+tombino104-chatwoot|chatwoot/chatwoot|gh:chatwoot/chatwoot

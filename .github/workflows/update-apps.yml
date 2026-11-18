@@ -14,7 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: bash .github/update-apps.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Commit changes
+        if: always()
         run: |
           git diff --quiet && exit 0
           git config user.name "github-actions[bot]"

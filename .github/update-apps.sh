@@ -1,21 +1,51 @@
 #!/usr/bin/env bash
-# Pins every tracked app to the current digest of its image and bumps its
-# version when the digest changed, so Umbrel offers the update.
-set -euo pipefail
+# Keeps the tracked apps up to date. See ../AGENTS.md ("Auto-updates").
+#
+# For each line of .github/tracked-apps.txt (app|image|source):
+#   1. work out the image tag: "latest" (or any fixed tag), or the tag of the
+#      project's newest GitHub release (gh:owner/repo, gh-nov:owner/repo drops a leading "v")
+#   2. resolve that tag to a digest and pin it in the app's docker-compose.yml
+#   3. when something changed, bump `version` in umbrel-app.yml so Umbrel offers
+#      the update (release number for gh sources, today's date for the others)
+# A broken line is reported and skipped; the others still run. Exit 1 at the end if any failed.
+set -uo pipefail
 cd "$(dirname "$0")/.."
-version="$(date -u +%Y.%-m.%-d)"
+today="$(date -u +%Y.%-m.%-d)"
+failed=0
 
-while IFS='|' read -r app image tag; do
-  [[ -z "${app// }" || "$app" == \#* ]] && continue
-  digest="$(docker buildx imagetools inspect "$image:$tag" --format '{{.Manifest.Digest}}')"
-  [[ "$digest" == sha256:* ]] || { echo "::error::no digest for $image:$tag"; exit 1; }
-  compose="$app/docker-compose.yml"
-  new="image: $image:$tag@$digest"
-  if grep -qF "$new" "$compose"; then
-    echo "$app is up to date"
-    continue
+fail() { echo "::error::$*"; failed=1; }
+
+track() {
+  local app="$1" image="$2" source="$3" tag version
+  case "$source" in
+    gh:*|gh-nov:*)
+      tag="$(gh api "repos/${source#*:}/releases/latest" --jq .tag_name)" || { fail "$app: no release found for ${source#*:}"; return; }
+      [[ "$source" == gh-nov:* ]] && tag="${tag#v}"
+      version="${tag#v}"
+      ;;
+    *)
+      tag="$source"
+      version="$today"
+      ;;
+  esac
+  local digest
+  digest="$(docker buildx imagetools inspect "$image:$tag" --format '{{.Manifest.Digest}}' 2>/dev/null)"
+  [[ "$digest" == sha256:* ]] || { fail "$app: $image:$tag was not found in its registry"; return; }
+
+  local compose="$app/docker-compose.yml" wanted="image: $image:$tag@$digest"
+  if grep -qF "$wanted" "$compose"; then
+    echo "$app: $image is up to date ($tag)"
+    return
   fi
-  sed -i -E "s|^( *)image: ${image}:.*|\1${new}|" "$compose"
+  sed -i -E "s|^( *)image: ${image}:.*|\1${wanted}|" "$compose"
+  grep -qF "$wanted" "$compose" || { fail "$app: no 'image: $image' line in $compose"; return; }
   sed -i -E "s|^version: .*|version: \"${version}\"|" "$app/umbrel-app.yml"
-  echo "$app -> $digest ($version)"
+  echo "$app: $image -> $tag ($digest), version $version"
+}
+
+while IFS='|' read -r app image source; do
+  [[ -z "${app// }" || "$app" == \#* ]] && continue
+  track "$app" "$image" "$source"
 done < .github/tracked-apps.txt
+
+exit "$failed"

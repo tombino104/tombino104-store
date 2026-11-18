@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: tombino104-open-seo
+category: developer
+name: OpenSEO
+version: "0.1.28"
+tagline: "Open source alternative to Semrush and Ahrefs"
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-open-seo/icon.svg
+description: >-
+  OpenSEO is an open source SEO toolkit: keyword research, backlinks, rank
+  tracking and site audits.
+
+
+  It gets its data from DataForSEO, which you pay directly. To enable it, create
+  the file data/openseo.env in this app's folder on your Umbrel (app-data/tombino104-open-seo)
+  with a line DATAFORSEO_API_KEY=... (a base64 login:password) and restart the app.
+  You can add OPENROUTER_API_KEY=... for the AI assistant. Without keys the app
+  starts but shows what is missing.
+
+
+  Umbrel's own login protects the app, so OpenSEO runs without a second sign-in.
+  Anonymous telemetry is turned off. The first start takes a minute or two
+  because the app builds itself, and so does the first start after each update.
+developer: every-app
+website: https://github.com/every-app/open-seo
+dependencies: []
+repo: https://github.com/every-app/open-seo
+support: https://github.com/every-app/open-seo/issues
+port: 8476
+gallery: []
+path: ""
+releaseNotes: ""
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store

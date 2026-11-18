@@ -1,0 +1,64 @@
+version: "3.7"
+
+x-chatwoot: &chatwoot
+  image: chatwoot/chatwoot:v4.20.0@sha256:224bac350a1a627120ac6500d6b6d509cbd3ef9bb57803bb935c631b47555836
+  restart: on-failure
+  environment: &chatwoot-env
+    NODE_ENV: production
+    RAILS_ENV: production
+    INSTALLATION_ENV: docker
+    SECRET_KEY_BASE: ${APP_SEED}
+    FRONTEND_URL: http://${DEVICE_DOMAIN_NAME}:8478
+    FORCE_SSL: "false"
+    ENABLE_ACCOUNT_SIGNUP: "false"
+    POSTGRES_HOST: postgres
+    POSTGRES_USERNAME: postgres
+    POSTGRES_PASSWORD: ${APP_SEED}
+    REDIS_URL: redis://redis:6379
+    REDIS_PASSWORD: ${APP_SEED}
+    ACTIVE_STORAGE_SERVICE: local
+    RAILS_LOG_TO_STDOUT: "true"
+    LOG_LEVEL: info
+  volumes:
+    - ${APP_DATA_DIR}/data/storage:/app/storage
+  depends_on:
+    - postgres
+    - redis
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-chatwoot_rails_1
+      APP_PORT: 3000
+      # Chatwoot has its own accounts: the first visit creates the admin.
+      PROXY_AUTH_ADD: "false"
+
+  rails:
+    <<: *chatwoot
+    stop_grace_period: 30s
+    entrypoint: docker/entrypoints/rails.sh
+    # Prepares the database (idempotent: creates it on the first start, migrates on updates), then serves.
+    command: ["sh", "-c", "bundle exec rails db:chatwoot_prepare && bundle exec rails s -p 3000 -b 0.0.0.0"]
+
+  sidekiq:
+    <<: *chatwoot
+    command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
+
+  postgres:
+    image: pgvector/pgvector:pg16@sha256:484e838076e04939d27d3e176e91c86eea96236126023be8d3059761122e579f
+    restart: on-failure
+    environment:
+      POSTGRES_DB: chatwoot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine@sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3
+    restart: on-failure
+    command: ["sh", "-c", "redis-server --requirepass \"$$REDIS_PASSWORD\""]
+    environment:
+      REDIS_PASSWORD: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
