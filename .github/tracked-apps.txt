@@ -8,3 +8,5 @@ tombino104-vibravid|ghcr.io/astraelabs/vibravid|latest
 tombino104-open-seo|ghcr.io/every-app/open-seo|gh-nov:every-app/open-seo
 tombino104-hycanvas|hycanvas/hycanvas|gh-nov:hyscaler/HyCanvas
 tombino104-chatwoot|chatwoot/chatwoot|gh:chatwoot/chatwoot
+tombino104-colanode|ghcr.io/colanode/server|gh-nov:colanode/colanode
+tombino104-colanode|ghcr.io/colanode/web|gh-nov:colanode/colanode

@@ -11,6 +11,7 @@ A community app store for umbrelOS.
 | OpenSEO | Open source alternative to Semrush and Ahrefs |
 | HyCanvas | Self-hosted Canva alternative |
 | Chatwoot | Open source customer support desk |
+| Colanode | Local-first Slack and Notion alternative |
 
 To use it, open the umbrelOS App Store, choose the menu at the top right, **Community App Stores**, and add `https://github.com/tombino104/tombino104-store`.
 

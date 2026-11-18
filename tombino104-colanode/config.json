@@ -1,0 +1,9 @@
+{
+  "name": "Colanode on Umbrel",
+  "mode": "standalone",
+  "cors": { "origin": true, "maxAge": 7200 },
+  "account": { "verificationType": "automatic" },
+  "storage": {
+    "provider": { "type": "file", "directory": "/var/lib/colanode/storage" }
+  }
+}

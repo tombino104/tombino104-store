@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: tombino104-colanode
+category: productivity
+name: Colanode
+version: "0.4.7"
+tagline: "Local-first Slack and Notion alternative"
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-colanode/icon.svg
+description: >-
+  Colanode is an open source, local-first workspace that puts chat, pages,
+  databases and files in one place, with real-time collaboration. Your data lives
+  on your Umbrel.
+
+
+  This app is the Colanode server together with its web app. The first time you
+  open it, add your own server: choose "Add server" on the login screen and enter
+  this Umbrel's address (for example umbrel.local:8479, with the insecure/http
+  option on). The web app needs a secure address (https, for example through
+  Tailscale) and a desktop browser; the Colanode desktop and mobile apps can
+  connect to the same server over your network.
+developer: Colanode
+website: https://github.com/colanode/colanode
+dependencies: []
+repo: https://github.com/colanode/colanode
+support: https://github.com/colanode/colanode/issues
+port: 8479
+gallery: []
+path: ""
+releaseNotes: ""
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store

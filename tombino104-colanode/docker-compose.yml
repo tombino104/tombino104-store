@@ -1,0 +1,65 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-colanode_proxy_1
+      APP_PORT: 80
+      # Colanode has its own accounts: you create them from the app.
+      PROXY_AUTH_ADD: "false"
+
+  # Serves the web app and forwards /config and /client to the server, so both live at one address.
+  proxy:
+    image: nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+    restart: on-failure
+    depends_on:
+      - web
+      - server
+    volumes:
+      - ${APP_DATA_DIR}/nginx.conf:/etc/nginx/nginx.conf:ro
+
+  web:
+    image: ghcr.io/colanode/web:0.4.7@sha256:bcad696f03eeb03778a2ddf2d0b2a6070c79b6f66ff81e4436b2b9ac3d378a28
+    restart: on-failure
+
+  server:
+    image: ghcr.io/colanode/server:0.4.7@sha256:7006cac874fd5a154425108b9c7e6d6d9d117933c3694820b1a4c28aeb10008c
+    restart: on-failure
+    stop_grace_period: 20s
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      CONFIG: /config.json
+      POSTGRES_URL: postgres://colanode_user:${APP_SEED}@postgres:5432/colanode_db
+      REDIS_URL: redis://:${APP_SEED}@valkey:6379/0
+    volumes:
+      - ${APP_DATA_DIR}/config.json:/config.json:ro
+      - ${APP_DATA_DIR}/data/storage:/var/lib/colanode/storage
+
+  postgres:
+    image: pgvector/pgvector:pg17@sha256:b513c48566e4777cd3370451400000c78eda6a08131d68f4c31d4a76f27bd8fd
+    restart: on-failure
+    environment:
+      POSTGRES_USER: colanode_user
+      POSTGRES_PASSWORD: ${APP_SEED}
+      POSTGRES_DB: colanode_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U colanode_user -d colanode_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+
+  valkey:
+    image: valkey/valkey:8.1@sha256:8f836008e0986c36adf50da714c7060cf689dbb335f61fe077939d90fa650809
+    restart: on-failure
+    command: ["sh", "-c", "valkey-server --requirepass \"$$VALKEY_PASSWORD\""]
+    environment:
+      VALKEY_PASSWORD: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/valkey:/data
