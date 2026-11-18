@@ -7,7 +7,7 @@ services:
       APP_PORT: 3000
 
   web:
-    image: ghcr.io/tombino104/homelab-savings:0.3.0@sha256:c0a82aef53b2ec0d9d80db82e58833219b963da4a1bcb006e0d632bec9b45e21
+    image: ghcr.io/tombino104/homelab-savings:0.4.0@sha256:7fbf0e0729890d97c9352d0db0cc27b1c2b776d725a81d9549da2d3dd0efe064
     restart: on-failure
     stop_grace_period: 10s
     environment:
