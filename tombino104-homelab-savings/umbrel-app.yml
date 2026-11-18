@@ -26,6 +26,7 @@ icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino
 gallery:
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/1-home.png
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/2-home-dark.png
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/3-services.png
 path: ""
 releaseNotes: >-
   Each service now counts from the month you added it (and until the month you stopped, if you set one), so the total saved so far is right when your list grows. The page is split into tabs, with the net per month and the total saved always visible at the top.
