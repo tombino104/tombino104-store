@@ -3,7 +3,7 @@ id: tombino104-homelab-savings
 
 category: finance
 name: Homelab Savings
-version: "0.4.0"
+version: "0.5.0"
 tagline: What does your homelab save you?
 description: >-
   A tiny calculator for how much money your homelab saves you. List the services you
@@ -27,7 +27,8 @@ gallery:
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/1-home.png
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/2-home-dark.png
   - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/3-services.png
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-homelab-savings/gallery/4-costs.png
 path: ""
 releaseNotes: >-
-  Each service now counts from the month you added it (and until the month you stopped, if you set one), so the total saved so far is right when your list grows. The page is split into tabs, with the net per month and the total saved always visible at the top.
+  Hardware is now a list of purchases, each counted in its own month. Any price (a service, a cost, the electricity) can change from a given month without changing the past. The summary shows which services saved the most.
 submitter: tombino104
