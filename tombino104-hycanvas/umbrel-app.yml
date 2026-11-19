@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-hycanvas
 category: files
 name: HyCanvas
-version: "0.3.24"
+version: "0.3.25"
 tagline: "Self-hosted Canva alternative: graphics, slides, video and docs"
 icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-hycanvas/icon.svg
 description: >-

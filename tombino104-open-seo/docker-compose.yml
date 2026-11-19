@@ -7,7 +7,7 @@ services:
       APP_PORT: 3001
 
   web:
-    image: ghcr.io/every-app/open-seo:0.1.28@sha256:a8d034bd6db290492b77f73761fcb3e2aa2dcedcf4d258fc762ba9aef948041b
+    image: ghcr.io/every-app/open-seo:0.1.30@sha256:8198e13af2e6c4b09cf2933b315e18eee12064262bc34999f12772d32f97fa89
     restart: on-failure
     stop_grace_period: 30s
     # Optional API keys (DATAFORSEO_API_KEY=..., OPENROUTER_API_KEY=...): see the app description.
