@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-upersite-crm
 category: productivity
 name: Upersite CRM
-version: "2026.11.20"
+version: "2.0.1-stable"
 tagline: "Clients, quotes, payments, tasks and automations"
 icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-upersite-crm/icon.svg
 description: >-
@@ -17,10 +17,10 @@ description: >-
   with a key derived from this app's secret on your Umbrel; set the backup folder in
   Settings to /backups.
 developer: Upersite Studio
-website: https://github.com/tombino104/tombino104-store
+website: https://github.com/tombino104/Upersite-CRM
 dependencies: []
-repo: https://github.com/tombino104/tombino104-store
-support: https://github.com/tombino104/tombino104-store/issues
+repo: https://github.com/tombino104/Upersite-CRM
+support: https://github.com/tombino104/Upersite-CRM/issues
 port: 8481
 gallery: []
 path: ""

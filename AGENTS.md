@@ -33,8 +33,8 @@ Rules that bite:
 `.github/workflows/update-apps.yml` runs daily (05:17 UTC) and on demand (`gh workflow run update-apps.yml`).
 It runs `.github/update-apps.sh`, which reads `.github/tracked-apps.txt` (`app|image|source`):
 
-- `latest` (or a fixed tag): pin the digest of that tag; version = today's date (`2026.11.18`). Use it when the project only publishes `latest`, or when its repo is private (the Action cannot read private releases: `tombino104-upersite-crm`).
-- `gh:owner/repo`: image tag = newest GitHub release tag; version = that release without the `v`.
+- `latest` (or a fixed tag): pin the digest of that tag; version = today's date (`2026.11.18`). Use it when the project only publishes `latest`.
+- `gh:owner/repo`: image tag = newest GitHub release tag (the repo must be public: the Action cannot read private releases); version = that release without the `v`.
 - `gh-nov:owner/repo`: same, for images tagged without the leading `v`.
 
 When the pinned digest changes, the script rewrites the `image:` line and bumps `version` in `umbrel-app.yml`;
