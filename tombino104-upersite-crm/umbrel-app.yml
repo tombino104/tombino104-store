@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: tombino104-upersite-crm
+category: productivity
+name: Upersite CRM
+version: "2026.11.20"
+tagline: "Clients, quotes, payments, tasks and automations"
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-upersite-crm/icon.svg
+description: >-
+  Upersite CRM is the self-hosted CRM of Upersite Studio: clients on a Kanban board,
+  quotes, instalments and due dates, tasks with priorities and a calendar, notes,
+  tickets and timesheets, encrypted client credentials, a built-in quote calculator
+  and a node-based editor for automations. Optional AI features can use a local or
+  cloud model.
+
+
+  The first time you open it, create the master password. Data is encrypted on disk
+  with a key derived from this app's secret on your Umbrel; set the backup folder in
+  Settings to /backups.
+developer: Upersite Studio
+website: https://github.com/tombino104/tombino104-store
+dependencies: []
+repo: https://github.com/tombino104/tombino104-store
+support: https://github.com/tombino104/tombino104-store/issues
+port: 8481
+gallery: []
+path: ""
+releaseNotes: ""
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store

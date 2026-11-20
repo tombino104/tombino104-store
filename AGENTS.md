@@ -16,7 +16,7 @@ Everything below was learned the hard way; follow it so a new app works first tr
 Rules that bite:
 
 - `tagline` and other one-line YAML values containing `: ` **must be quoted**, or the manifest is invalid (this already happened once).
-- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker; next free: 8481).
+- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker, 8481 upersite-crm; next free: 8482).
 - `app_proxy.environment`: `APP_HOST: <app-id>_<service>_1` (the container Umbrel creates) and `APP_PORT` (the port inside it).
   Add `PROXY_AUTH_ADD: "false"` when the app has its own accounts; leave the default when it has none (Umbrel's login then protects it).
 - Never publish ports with `ports:`; everything goes through `app_proxy`.
@@ -33,7 +33,7 @@ Rules that bite:
 `.github/workflows/update-apps.yml` runs daily (05:17 UTC) and on demand (`gh workflow run update-apps.yml`).
 It runs `.github/update-apps.sh`, which reads `.github/tracked-apps.txt` (`app|image|source`):
 
-- `latest` (or a fixed tag): pin the digest of that tag; version = today's date (`2026.11.18`). Use it when the project only publishes `latest`.
+- `latest` (or a fixed tag): pin the digest of that tag; version = today's date (`2026.11.18`). Use it when the project only publishes `latest`, or when its repo is private (the Action cannot read private releases: `tombino104-upersite-crm`).
 - `gh:owner/repo`: image tag = newest GitHub release tag; version = that release without the `v`.
 - `gh-nov:owner/repo`: same, for images tagged without the leading `v`.
 

@@ -11,3 +11,4 @@ tombino104-chatwoot|chatwoot/chatwoot|gh:chatwoot/chatwoot
 tombino104-colanode|ghcr.io/colanode/server|gh-nov:colanode/colanode
 tombino104-colanode|ghcr.io/colanode/web|gh-nov:colanode/colanode
 tombino104-taxhacker|ghcr.io/vas3k/taxhacker|gh-nov:vas3k/TaxHacker
+tombino104-upersite-crm|ghcr.io/tombino104/upersite-crm|latest

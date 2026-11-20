@@ -1,0 +1,43 @@
+version: "3.7"
+
+x-crm-image: &crm-image
+  image: ghcr.io/tombino104/upersite-crm:latest@sha256:63ef270b16ace03de8459de8748360e4a3f7018d52cbf79199cf36795305f781
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-upersite-crm_web_1
+      APP_PORT: 3000
+
+  # One-shot: the CRM runs as the non-root user "node" and must own its data folders.
+  init:
+    <<: *crm-image
+    user: "0"
+    entrypoint: ["sh", "-c", "mkdir -p /data /backups && chown -R node:node /data /backups"]
+    restart: "no"
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+      - ${APP_DATA_DIR}/data/backups:/backups
+
+  web:
+    <<: *crm-image
+    restart: on-failure
+    stop_grace_period: 20s
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    environment:
+      # Encrypts the data on disk. It is derived from this app's Umbrel secret: keep your own
+      # backups, because the data cannot be read without this key.
+      CRM_ENCRYPTION_KEY: ${APP_SEED}
+      # Behind Umbrel's proxy: the login rate limit must count the real client, not the proxy.
+      CRM_TRUST_PROXY: "1"
+      CRM_SESSION_HOURS: "12"
+      TZ: Europe/Rome
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+      - ${APP_DATA_DIR}/data/backups:/backups
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
