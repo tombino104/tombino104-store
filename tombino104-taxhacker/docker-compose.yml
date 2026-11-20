@@ -1,0 +1,57 @@
+version: "3.7"
+
+x-taxhacker: &taxhacker
+  image: ghcr.io/vas3k/taxhacker:0.8.5@sha256:465c8f4510063221352f779a3bf98d2badd56797424d788011eb8f4eba2e6015
+  restart: on-failure
+  security_opt:
+    - no-new-privileges:true
+  environment: &taxhacker-env
+    NODE_ENV: production
+    # Self-hosted mode: no sign-in inside the app (Umbrel's own login protects it) and AI keys are set in the app's settings.
+    SELF_HOSTED_MODE: "true"
+    UPLOAD_PATH: /app/data/uploads
+    DATABASE_URL: postgresql://postgres:${APP_SEED}@postgres:5432/taxhacker
+    BETTER_AUTH_SECRET: ${APP_SEED}
+    BASE_URL: http://${DEVICE_DOMAIN_NAME}:8480
+  volumes:
+    - ${APP_DATA_DIR}/data/app:/app/data
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-taxhacker_app_1
+      APP_PORT: 7331
+
+  app:
+    <<: *taxhacker
+    stop_grace_period: 20s
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Email sync heartbeat (every 5 minutes), only does work if you connect a mailbox in the app.
+  cron:
+    <<: *taxhacker
+    command: ["docker-cron-entrypoint.sh"]
+    depends_on:
+      - app
+    volumes:
+      - ${APP_DATA_DIR}/data/app:/app/data
+      - ${APP_DATA_DIR}/crontab:/mnt/crontab:ro
+
+  postgres:
+    image: postgres:17-alpine@sha256:526f86d93c6ea08fd3f1fe5605650cacc781b2c6013169a0ad8f42c7d3d84f32
+    restart: on-failure
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${APP_SEED}
+      POSTGRES_DB: taxhacker
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d taxhacker"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data

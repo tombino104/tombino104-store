@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: tombino104-taxhacker
+category: finance
+name: TaxHacker
+version: "0.8.5"
+tagline: "Self-hosted AI accounting for receipts and invoices"
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-taxhacker/icon.svg
+description: >-
+  TaxHacker is a self-hosted accounting app for freelancers and small businesses.
+  Upload photos of receipts or PDF invoices and an AI model extracts the merchant,
+  date, amounts, taxes and items into a searchable table. It converts currencies at
+  the rate of the transaction date, supports custom categories, projects and fields
+  with your own prompts, and exports everything to CSV.
+
+
+  It needs an AI provider: after the first start, open Settings and enter an API key
+  (OpenAI, Google Gemini or Mistral) or the address of a local model. Without a key
+  you can still enter transactions by hand.
+
+
+  The app has no sign-in of its own: Umbrel's login protects it. Documents and the
+  database stay on your Umbrel; only what you send to your chosen AI provider leaves it.
+developer: Vasily Zubarev
+website: https://github.com/vas3k/TaxHacker
+dependencies: []
+repo: https://github.com/vas3k/TaxHacker
+support: https://github.com/vas3k/TaxHacker/issues
+port: 8480
+gallery: []
+path: ""
+releaseNotes: ""
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store

@@ -16,7 +16,7 @@ Everything below was learned the hard way; follow it so a new app works first tr
 Rules that bite:
 
 - `tagline` and other one-line YAML values containing `: ` **must be quoted**, or the manifest is invalid (this already happened once).
-- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode; next free: 8480).
+- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker; next free: 8481).
 - `app_proxy.environment`: `APP_HOST: <app-id>_<service>_1` (the container Umbrel creates) and `APP_PORT` (the port inside it).
   Add `PROXY_AUTH_ADD: "false"` when the app has its own accounts; leave the default when it has none (Umbrel's login then protects it).
 - Never publish ports with `ports:`; everything goes through `app_proxy`.
