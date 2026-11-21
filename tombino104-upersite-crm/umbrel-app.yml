@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-upersite-crm
 category: productivity
 name: Upersite CRM
-version: "2.0.1-stable"
+version: "2.0.2-stable"
 tagline: "Clients, quotes, payments, tasks and automations"
 icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-upersite-crm/icon.svg
 description: >-
