@@ -1,5 +1,12 @@
 manifestVersion: 1
 id: tombino104-upersite-crm
+folderAccess:
+  - id: backup-folder
+    name: Backup folder
+    note: Pick a folder (Home, an external drive or a network share). In the CRM, open Settings → Backup and data → Browse… and choose it under /cartelle. Without this, backups go to the app's own /backups folder.
+    mounts:
+      - service: web
+        targetPath: /cartelle
 category: productivity
 name: Upersite CRM
 version: "2.0.2-stable"
@@ -14,8 +21,10 @@ description: >-
 
 
   The first time you open it, create the master password. Data is encrypted on disk
-  with a key derived from this app's secret on your Umbrel; set the backup folder in
-  Settings to /backups.
+  with a key derived from this app's secret on your Umbrel. Backups go to the app's
+  /backups folder by default; to save them somewhere else (Home, an external drive,
+  a network share), choose a folder in the app's settings on Umbrel and pick it in the
+  CRM from Settings → Backup and data → Browse…. Keep a recent backup outside Umbrel too.
 developer: Upersite Studio
 website: https://github.com/tombino104/Upersite-CRM
 dependencies: []
