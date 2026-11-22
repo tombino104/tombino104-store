@@ -1,7 +1,7 @@
 version: "3.7"
 
 x-crm-image: &crm-image
-  image: ghcr.io/tombino104/upersite-crm:2.0.4-stable@sha256:8fe16f8fdb675a51806484695664538a8ce41633b8555641b0ee17771a313113
+  image: ghcr.io/tombino104/upersite-crm:2.0.5-stable@sha256:338eff966e9546c134d7d712ec76c13e5db858543e7db301dfb1873e10340876
 
 services:
   app_proxy:
