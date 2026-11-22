@@ -33,6 +33,8 @@ services:
       # Behind Umbrel's proxy: the login rate limit must count the real client, not the proxy.
       CRM_TRUST_PROXY: "1"
       CRM_SESSION_HOURS: "12"
+      # Tells the app where its folders are on your Umbrel (shown next to the paths in Settings).
+      CRM_PATH_HINTS: "/data=Apps/tombino104-upersite-crm/data/data;/backups=Apps/tombino104-upersite-crm/data/backups"
       TZ: Europe/Rome
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
