@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-open-seo
 category: developer
 name: OpenSEO
-version: "0.1.31"
+version: "0.1.32"
 tagline: "Open source alternative to Semrush and Ahrefs"
 icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-open-seo/icon.svg
 description: >-
