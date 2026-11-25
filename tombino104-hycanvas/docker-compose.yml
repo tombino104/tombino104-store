@@ -10,7 +10,7 @@ services:
 
   # One-shot: the app runs as uid 10001 and needs to own its storage folder.
   storage-init:
-    image: hycanvas/hycanvas:0.3.25@sha256:731e7134a143840c8c1ca536e9a980578251e42ed8d9ff07a05b57715e691f8f
+    image: hycanvas/hycanvas:0.3.26@sha256:07998f62f360ee3c056e1636599d5f1f19ee23b1a89fa440fccf1588725a244a
     user: "0"
     entrypoint: ["sh", "-c", "mkdir -p /app/.data/storage && chown -R 10001:0 /app/.data/storage"]
     restart: "no"
@@ -18,7 +18,7 @@ services:
       - ${APP_DATA_DIR}/data/storage:/app/.data/storage
 
   app:
-    image: hycanvas/hycanvas:0.3.25@sha256:731e7134a143840c8c1ca536e9a980578251e42ed8d9ff07a05b57715e691f8f
+    image: hycanvas/hycanvas:0.3.26@sha256:07998f62f360ee3c056e1636599d5f1f19ee23b1a89fa440fccf1588725a244a
     restart: on-failure
     stop_grace_period: 20s
     depends_on:
