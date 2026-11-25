@@ -1,0 +1,38 @@
+manifestVersion: 2.0
+id: tombino104-taskhit
+storage:
+  dataRoot: data
+category: productivity
+name: TaskHit
+version: "0.1.1"
+tagline: Il calendario condiviso della classe
+description: >-
+  Al primo avvio apri l'app dalla rete di casa e crea l'account amministratore: il setup è bloccato per chi arriva dal tunnel Cloudflare finché non lo abiliti nella configurazione.
+
+
+  TaskHit è un calendario scolastico condiviso: eventi pubblici per tutta la classe, eventi privati cifrati sul tuo dispositivo, inbox delle modifiche, ruoli con approvazione e temi personalizzabili.
+
+
+  La password non lascia mai il dispositivo. Conserva la chiave di recupero che ti viene mostrata alla creazione dell'account: senza di essa e senza la password i dati privati non sono recuperabili.
+releaseNotes: "Nuovo logo e nuove icone dell'app."
+
+developer: Lorenzo
+website: https://github.com/tombino104/taskhit
+dependencies: []
+repo: https://github.com/tombino104/taskhit
+support: https://github.com/tombino104/taskhit/issues
+
+port: 3480
+icon: https://raw.githubusercontent.com/tombino104/TaskHit/main/web/public/icon-512.png
+gallery:
+  - https://raw.githubusercontent.com/tombino104/TaskHit/main/docs/img/umbrel-1.jpg
+  - https://raw.githubusercontent.com/tombino104/TaskHit/main/docs/img/umbrel-2.jpg
+  - https://raw.githubusercontent.com/tombino104/TaskHit/main/docs/img/umbrel-3.jpg
+path: ""
+requiresHttps: true
+
+defaultUsername: ""
+defaultPassword: ""
+
+submitter: Lorenzo
+submission: ""

@@ -2,6 +2,7 @@
 #   source = latest (or any fixed tag)  -> pin the digest of that tag, version = today's date
 #   source = gh:owner/repo              -> image tag = newest GitHub release tag, version = that release
 #   source = gh-nov:owner/repo          -> same, but the image tag has no leading "v"
+#   source = tag-nov:owner/repo         -> newest vX.Y.Z git tag (no release needed), image tag without "v"
 # Only the images listed here are refreshed; sidecars (databases, redis...) stay pinned.
 tombino104-mini-qr|ghcr.io/lyqht/mini-qr|latest
 tombino104-vibravid|ghcr.io/astraelabs/vibravid|latest
@@ -12,3 +13,4 @@ tombino104-colanode|ghcr.io/colanode/server|gh-nov:colanode/colanode
 tombino104-colanode|ghcr.io/colanode/web|gh-nov:colanode/colanode
 tombino104-taxhacker|ghcr.io/vas3k/taxhacker|gh-nov:vas3k/TaxHacker
 tombino104-upersite-crm|ghcr.io/tombino104/upersite-crm|gh-nov:tombino104/Upersite-CRM
+tombino104-taskhit|ghcr.io/tombino104/taskhit|tag-nov:tombino104/TaskHit

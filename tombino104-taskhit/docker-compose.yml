@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-taskhit_web_1
+      APP_PORT: 8080
+      # TaskHit ha il proprio accesso (i compagni entrano dal tunnel senza account Umbrel).
+      PROXY_AUTH_ADD: "false"
+
+  web:
+    # Immagine fissata per digest: va aggiornata insieme al numero di versione a ogni release.
+    image: ghcr.io/tombino104/taskhit:0.1.1@sha256:d53d6c8ee1626047395a6487bda13929878f19440ca521ce94b81bf7f515f65b
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 15s
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    environment:
+      TASKHIT_DATA_DIR: /data
+      TASKHIT_COOKIE_SECURE: "true"
+      # TASKHIT_PUBLIC_URL: "https://taskhit-tombino104.net"
+    volumes:
+      - ${APP_DATA_DIR}/data/app:/data

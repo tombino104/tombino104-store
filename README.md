@@ -14,6 +14,7 @@ A community app store for umbrelOS.
 | Colanode | Local-first Slack and Notion alternative |
 | TaxHacker | Self-hosted AI accounting for receipts and invoices |
 | Upersite CRM | Clients, quotes, payments, tasks and automations |
+| TaskHit | Shared school calendar |
 
 To use it, open the umbrelOS App Store, choose the menu at the top right, **Community App Stores**, and add `https://github.com/tombino104/tombino104-store`.
 

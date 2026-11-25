@@ -4,6 +4,7 @@
 # For each line of .github/tracked-apps.txt (app|image|source):
 #   1. work out the image tag: "latest" (or any fixed tag), or the tag of the
 #      project's newest GitHub release (gh:owner/repo, gh-nov:owner/repo drops a leading "v")
+#      or newest version tag (tag-nov:owner/repo)
 #   2. resolve that tag to a digest and pin it in the app's docker-compose.yml
 #   3. when something changed, bump `version` in umbrel-app.yml so Umbrel offers
 #      the update (release number for gh sources, today's date for the others)
@@ -22,6 +23,12 @@ track() {
       tag="$(gh api "repos/${source#*:}/releases/latest" --jq .tag_name)" || { fail "$app: no release found for ${source#*:}"; return; }
       [[ "$source" == gh-nov:* ]] && tag="${tag#v}"
       version="${tag#v}"
+      ;;
+    tag-nov:*)
+      # Projects that push version tags without publishing a GitHub release.
+      tag="$(gh api "repos/${source#*:}/tags" --paginate --jq '.[].name' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/^v//' | sort -V | tail -n 1)"
+      [[ -n "$tag" ]] || { fail "$app: no version tag found for ${source#*:}"; return; }
+      version="$tag"
       ;;
     *)
       tag="$source"

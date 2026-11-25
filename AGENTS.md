@@ -16,7 +16,7 @@ Everything below was learned the hard way; follow it so a new app works first tr
 Rules that bite:
 
 - `tagline` and other one-line YAML values containing `: ` **must be quoted**, or the manifest is invalid (this already happened once).
-- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker, 8481 upersite-crm; next free: 8482).
+- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker, 8481 upersite-crm, 3480 taskhit; next free: 8482).
 - `app_proxy.environment`: `APP_HOST: <app-id>_<service>_1` (the container Umbrel creates) and `APP_PORT` (the port inside it).
   Add `PROXY_AUTH_ADD: "false"` when the app has its own accounts; leave the default when it has none (Umbrel's login then protects it).
 - Never publish ports with `ports:`; everything goes through `app_proxy`.
@@ -36,6 +36,8 @@ It runs `.github/update-apps.sh`, which reads `.github/tracked-apps.txt` (`app|i
 - `latest` (or a fixed tag): pin the digest of that tag; version = today's date (`2026.11.18`). Use it when the project only publishes `latest`.
 - `gh:owner/repo`: image tag = newest GitHub release tag (the repo must be public: the Action cannot read private releases); version = that release without the `v`.
 - `gh-nov:owner/repo`: same, for images tagged without the leading `v`.
+- `tag-nov:owner/repo`: newest `vX.Y.Z` git tag, for projects without GitHub releases (`tombino104-taskhit`). If the image of a fresh tag is still building, that line fails and is retried the next day.
+  TaskHit's folder was copied from `umbrel-store/` in its repo; manifest or compose changes made there must be copied here by hand. It needs `data/app/.gitkeep` and HTTPS (umbrelOS 2.x).
 
 When the pinned digest changes, the script rewrites the `image:` line and bumps `version` in `umbrel-app.yml`;
 Umbrel only offers an update when `version` changes. The workflow commits and pushes to `main`.
