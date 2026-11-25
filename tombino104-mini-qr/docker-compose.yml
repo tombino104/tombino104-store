@@ -7,6 +7,6 @@ services:
       APP_PORT: 8080
 
   web:
-    image: ghcr.io/lyqht/mini-qr:latest@sha256:4c1107fc55539a66020edc9d338e903be7e98c203dcbe1c50d4fbd0f503f633d
+    image: ghcr.io/lyqht/mini-qr:latest@sha256:b6211c8a9be0a97c1c46b6a048fac2da97ef0892414d51eb4c60d69331320456
     restart: on-failure
     stop_grace_period: 10s

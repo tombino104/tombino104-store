@@ -4,7 +4,7 @@ storage:
   dataRoot: data
 category: productivity
 name: TaskHit
-version: "0.1.1"
+version: "0.1.2"
 tagline: Il calendario condiviso della classe
 description: >-
   Al primo avvio apri l'app dalla rete di casa e crea l'account amministratore: il setup è bloccato per chi arriva dal tunnel Cloudflare finché non lo abiliti nella configurazione.
