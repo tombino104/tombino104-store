@@ -8,7 +8,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   web:
-    image: ghcr.io/astraelabs/vibravid:latest@sha256:442d99134a006ae31c63d5e99791a0741e5b7ad4f4e26cec36e622c57066d6ba
+    image: ghcr.io/astraelabs/vibravid:latest@sha256:d5403fe02a3497a30f0ce26964608f9e7485e3328ffc5848e0ae89930dbc2626
     restart: on-failure
     stop_grace_period: 10s
     environment:

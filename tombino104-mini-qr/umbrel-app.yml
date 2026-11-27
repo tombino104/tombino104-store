@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-mini-qr
 category: files
 name: MiniQR
-version: "2026.11.26"
+version: "2026.11.27"
 tagline: Create and scan cute QR codes
 icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-mini-qr/icon.svg
 description: >-
