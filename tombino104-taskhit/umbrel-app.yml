@@ -1,20 +1,30 @@
 manifestVersion: 2.0
 id: tombino104-taskhit
+folderAccess:
+  - id: backup-folder
+    name: Cartella per le copie dei backup
+    note: >-
+      Facoltativa. Scegli una cartella (in Home, su un disco esterno o in rete): ogni backup di TaskHit
+      vi viene anche copiato, e resta se disinstalli l'app. I file contengono tutti i dati: scegli una
+      cartella privata.
+    mounts:
+      - service: web
+        targetPath: /copie
 storage:
   dataRoot: data
 category: productivity
 name: TaskHit
-version: "0.1.2"
+version: "0.2.0"
 tagline: Il calendario condiviso della classe
 description: >-
-  Al primo avvio apri l'app dalla rete di casa e crea l'account amministratore: il setup è bloccato per chi arriva dal tunnel Cloudflare finché non lo abiliti nella configurazione.
+  Serve un indirizzo HTTPS: aperta in http:// l'app non permette di creare account né di accedere. Al primo avvio crea subito l'account amministratore: il setup è bloccato per chi arriva dal tunnel Cloudflare finché non lo abiliti nella configurazione.
 
 
-  TaskHit è un calendario scolastico condiviso: eventi pubblici per tutta la classe, eventi privati cifrati sul tuo dispositivo, inbox delle modifiche, ruoli con approvazione e temi personalizzabili.
+  TaskHit è un calendario scolastico condiviso: eventi pubblici per tutta la classe, eventi privati cifrati sul tuo dispositivo, inbox delle modifiche, ruoli con approvazione, temi personalizzabili e backup automatici.
 
 
   La password non lascia mai il dispositivo. Conserva la chiave di recupero che ti viene mostrata alla creazione dell'account: senza di essa e senza la password i dati privati non sono recuperabili.
-releaseNotes: "Nuovo logo e nuove icone dell'app."
+releaseNotes: "Backup automatici, scaricamento e ripristino in Profilo, Backup. Puoi scegliere una cartella per una seconda copia nelle impostazioni dell'app."
 
 developer: Lorenzo
 website: https://github.com/tombino104/taskhit
