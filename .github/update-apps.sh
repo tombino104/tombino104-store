@@ -14,7 +14,7 @@ cd "$(dirname "$0")/.."
 today="$(date -u +%Y.%-m.%-d)"
 failed=0
 
-fail() { echo "::error::$*"; failed=1; }
+fail() { if [[ -n "${ONLY_OWN:-}" ]]; then echo "::warning::$*"; else echo "::error::$*"; failed=1; fi; }
 
 track() {
   local app="$1" image="$2" source="$3" tag version
@@ -26,7 +26,7 @@ track() {
       ;;
     tag-nov:*)
       # Projects that push version tags without publishing a GitHub release.
-      tag="$(gh api "repos/${source#*:}/tags" --paginate --jq '.[].name' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/^v//' | sort -V | tail -n 1)"
+      tag="$(gh api "repos/${source#*:}/tags" --paginate --jq '.[].name' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/^v//' | sort -rV | head -n 5 | while read -r v; do docker buildx imagetools inspect "$image:$v" </dev/null >/dev/null 2>&1 && { echo "$v"; break; }; done)"
       [[ -n "$tag" ]] || { fail "$app: no version tag found for ${source#*:}"; return; }
       version="$tag"
       ;;
@@ -52,6 +52,7 @@ track() {
 
 while IFS='|' read -r app image source; do
   [[ -z "${app// }" || "$app" == \#* ]] && continue
+  [[ -n "${ONLY_OWN:-}" && "$source" != *:tombino104/* ]] && continue
   track "$app" "$image" "$source"
 done < .github/tracked-apps.txt
 
