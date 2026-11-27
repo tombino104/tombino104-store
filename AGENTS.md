@@ -36,7 +36,7 @@ It runs `.github/update-apps.sh`, which reads `.github/tracked-apps.txt` (`app|i
 - `latest` (or a fixed tag): pin the digest of that tag; version = today's date (`2026.11.18`). Use it when the project only publishes `latest`.
 - `gh:owner/repo`: image tag = newest GitHub release tag (the repo must be public: the Action cannot read private releases); version = that release without the `v`.
 - `gh-nov:owner/repo`: same, for images tagged without the leading `v`.
-- `tag-nov:owner/repo`: newest `vX.Y.Z` git tag, for projects without GitHub releases (`tombino104-taskhit`). If the image of a fresh tag is still building, that line fails and is retried the next day.
+- `tag-nov:owner/repo`: newest `vX.Y.Z` git tag, for projects without GitHub releases (`tombino104-taskhit`). If the image of a fresh tag is still building, the newest tag that already has an image is used. Besides the daily run, sources owned by tombino104 are checked every 15 minutes (ONLY_OWN=1). A release that needs compose or manifest changes must be copied here before its tag is pushed.
   TaskHit's folder was copied from `umbrel-store/` in its repo; manifest or compose changes made there must be copied here by hand. It needs `data/app/.gitkeep` and HTTPS (umbrelOS 2.x).
 
 When the pinned digest changes, the script rewrites the `image:` line and bumps `version` in `umbrel-app.yml`;
