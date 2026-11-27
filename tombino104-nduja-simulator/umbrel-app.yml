@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: tombino104-nduja-simulator
+category: social
+name: "'Nduja Simulator"
+version: "2026.11.27"
+tagline: "Eat, fight the horses, clear the dungeon. Multiplayer arena included."
+description: >-
+  A 3D first-person game set in Peppino's salumeria. Story, endless and dungeon modes, plus a
+  free-for-all PvP arena with katana, lupara, chili launcher and more: share an arena code with friends
+  and play together in the browser, on desktop or phone. The Elo leaderboard is kept on your Umbrel.
+
+
+  No accounts, no tracking. The app is a tiny Node.js server (a few megabytes of memory) that serves the
+  game and relays the arena over WebSocket; ratings are stored in one small SQLite file.
+  To play from outside your home, point a Cloudflare Tunnel (or any reverse proxy that supports WebSockets)
+  at this app.
+developer: tombino104
+website: https://github.com/tombino104/nduja-simulator
+dependencies: []
+repo: https://github.com/tombino104/nduja-simulator
+support: https://github.com/tombino104/nduja-simulator/issues
+port: 8482
+icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-nduja-simulator/icon.svg
+gallery:
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-nduja-simulator/gallery/1-menu.png
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-nduja-simulator/gallery/2-arena.png
+  - https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-nduja-simulator/gallery/3-lobby.png
+path: ""
+releaseNotes: "First self-hosted release: own multiplayer server for the PvP arena, Elo leaderboard on your Umbrel, no external CDN."
+submitter: tombino104
+submission: https://github.com/tombino104/tombino104-store

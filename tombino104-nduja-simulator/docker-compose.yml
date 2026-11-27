@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: tombino104-nduja-simulator_web_1
+      APP_PORT: 3000
+      # The game has no accounts and is meant to be shared with friends: skip Umbrel's login in front of it.
+      PROXY_AUTH_ADD: "false"
+
+  web:
+    image: ghcr.io/tombino104/nduja-simulator:latest@sha256:14439a7d649f35ecc50db2cd9497ef6f3bcd84640da00f64d13216e75555eb16
+    restart: on-failure
+    stop_grace_period: 10s
+    environment:
+      PORT: 3000
+      DATA_DIR: /data
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    read_only: true
+    security_opt:
+      - no-new-privileges:true

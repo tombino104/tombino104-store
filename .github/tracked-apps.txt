@@ -14,3 +14,4 @@ tombino104-colanode|ghcr.io/colanode/web|gh-nov:colanode/colanode
 tombino104-taxhacker|ghcr.io/vas3k/taxhacker|gh-nov:vas3k/TaxHacker
 tombino104-upersite-crm|ghcr.io/tombino104/upersite-crm|gh-nov:tombino104/Upersite-CRM
 tombino104-taskhit|ghcr.io/tombino104/taskhit|tag-nov:tombino104/TaskHit
+tombino104-nduja-simulator|ghcr.io/tombino104/nduja-simulator|latest

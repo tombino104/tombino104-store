@@ -16,7 +16,7 @@ Everything below was learned the hard way; follow it so a new app works first tr
 Rules that bite:
 
 - `tagline` and other one-line YAML values containing `: ` **must be quoted**, or the manifest is invalid (this already happened once).
-- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker, 8481 upersite-crm, 3480 taskhit; next free: 8482).
+- Pick a unique host `port` (taken: 8000 vibravid, 8473 personal-os, 8474 homelab-savings, 8475 mini-qr, 8476 open-seo, 8477 hycanvas, 8478 chatwoot, 8479 colanode, 8480 taxhacker, 8481 upersite-crm, 3480 taskhit, 8482 nduja-simulator; next free: 8483).
 - `app_proxy.environment`: `APP_HOST: <app-id>_<service>_1` (the container Umbrel creates) and `APP_PORT` (the port inside it).
   Add `PROXY_AUTH_ADD: "false"` when the app has its own accounts; leave the default when it has none (Umbrel's login then protects it).
 - Never publish ports with `ports:`; everything goes through `app_proxy`.
@@ -43,6 +43,8 @@ When the pinned digest changes, the script rewrites the `image:` line and bumps 
 Umbrel only offers an update when `version` changes. The workflow commits and pushes to `main`.
 A line whose image or release cannot be found is reported as an error and skipped; the others still run.
 Locally: `bash .github/update-apps.sh` (needs `docker buildx` and an authenticated `gh`; no Docker daemon needed).
+
+`tombino104-nduja-simulator` follows `latest` of `ghcr.io/tombino104/nduja-simulator`: the app repo's CI publishes it on every push to `main` (the session that built it could not create git tags or releases). It is a Node server with a WebSocket, so the Cloudflare route must point at the app port (8482) and `PROXY_AUTH_ADD` stays `"false"`.
 
 Apps maintained by hand (their own releases, with release notes): `tombino104-homelab-savings` (see the homelab-savings repo: tag `vX.Y.Z`, CI publishes the image, then bump version + digest here) and `tombino104-personal-os`.
 
