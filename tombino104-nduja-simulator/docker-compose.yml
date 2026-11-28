@@ -9,7 +9,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   web:
-    image: ghcr.io/tombino104/nduja-simulator:latest@sha256:14439a7d649f35ecc50db2cd9497ef6f3bcd84640da00f64d13216e75555eb16
+    image: ghcr.io/tombino104/nduja-simulator:latest@sha256:594883cec72d55c34db1dc0934548c99b5890b54757ba9d4df2cef18767739f9
     restart: on-failure
     stop_grace_period: 10s
     environment:

@@ -1,7 +1,7 @@
 version: "3.7"
 
 x-chatwoot: &chatwoot
-  image: chatwoot/chatwoot:v4.20.1@sha256:49cf2b0dbbe5610417769bee15ae8a7d0474eab331ea8dbd9f3aae06d07b42cb
+  image: chatwoot/chatwoot:v4.20.2@sha256:913fd68c8bf58861814cb6a78fab5d701ce4a9772084cbd5c4d21bb94cf7c11d
   restart: on-failure
   environment: &chatwoot-env
     NODE_ENV: production

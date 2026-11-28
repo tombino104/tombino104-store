@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-nduja-simulator
 category: social
 name: "'Nduja Simulator"
-version: "2026.11.27"
+version: "2026.11.28"
 tagline: "Eat, fight the horses, clear the dungeon. Multiplayer arena included."
 description: >-
   A 3D first-person game set in Peppino's salumeria. Story, endless and dungeon modes, plus a

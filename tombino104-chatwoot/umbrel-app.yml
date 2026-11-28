@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tombino104-chatwoot
 category: social
 name: Chatwoot
-version: "4.20.1"
+version: "4.20.2"
 tagline: "Open source customer support: live chat, email and more"
 icon: https://raw.githubusercontent.com/tombino104/tombino104-store/main/tombino104-chatwoot/icon.svg
 description: >-
