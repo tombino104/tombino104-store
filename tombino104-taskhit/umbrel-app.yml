@@ -14,7 +14,7 @@ storage:
   dataRoot: data
 category: productivity
 name: TaskHit
-version: "0.7.0"
+version: "0.8.0"
 tagline: Il calendario condiviso della classe
 description: >-
   Serve un indirizzo HTTPS: aperta in http:// l'app non permette di creare account né di accedere. Al primo avvio crea subito l'account amministratore: il setup è bloccato per chi arriva dal tunnel Cloudflare finché non lo abiliti nella configurazione.
@@ -24,7 +24,7 @@ description: >-
 
 
   La password non lascia mai il dispositivo. Conserva la chiave di recupero che ti viene mostrata alla creazione dell'account: senza di essa e senza la password i dati privati non sono recuperabili.
-releaseNotes: "App anche in inglese e temi chiari e scuri. Inoltre gruppi di lavoro, accesso con nome e cognome, foto profilo, moderazione ed eventi colorati. Chi aveva un nome utente entra una volta da «Avevi un nome utente?». Account admin e alunno devono avere nomi diversi."
+releaseNotes: "Novità 0.8: l'admin può eliminare account, la versione si vede nel profilo e il nome compare sugli eventi per una singola persona."
 
 developer: Lorenzo
 website: https://github.com/tombino104/taskhit
